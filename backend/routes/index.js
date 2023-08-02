@@ -33,7 +33,7 @@ const routes = (app) => {
 
   // Delete a record
   router.delete("/:id", (req, res) => {
-    const query = { _id: new ObjectId(req.params.id) };
+    const query = { _id: req.params.id.toString() };
 
     Todo.deleteOne(query)
       .then( () => {
