@@ -10,14 +10,12 @@
     input{
       width: 80% !important;
     }
+    margin-bottom: 0.5rem;
   }
 }
 
-//.list-group-item{
-//  &.active:hover{
-//
-//  }
-//  &active:hover{
-//    background-color: #d3d3d3;
-//  }
-//}
+.list-group-item {
+  span {
+    float:right;
+  }
+}

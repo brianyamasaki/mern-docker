@@ -1,11 +1,19 @@
 import React from "react";
+import DeleteIcon from './icons/delete-icon';
 
-const TodoList = ({todos}) => {
+const TodoList = ({todos, deleteTodo}) => {
 
   const [activeIndex, setActiveIndex ] = React.useState(0);
 
   const handleActive = (index) => {
     setActiveIndex(index);
+  }
+
+  const onDelete = (i) => {
+    deleteTodo(todos[i]);
+    if (activeIndex === i) {
+      setActiveIndex(0);
+    }
   }
 
   const renderTodos = (todos) => {
@@ -23,6 +31,9 @@ const TodoList = ({todos}) => {
             }}
           >
             {todo.text}
+            <span onClick={() => onDelete(i)}>
+              <DeleteIcon/>
+            </span>
           </li>
         ))}
       </ul>

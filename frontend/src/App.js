@@ -25,6 +25,15 @@ const App = () => {
       .catch((e) => console.log("Error : ", e));
   };
 
+  const deleteTodo = (todo) => {
+    axios.delete(`/api/${todo._id}`)
+      .then (() =>{
+        setTodos(todos.filter((todoT) => (todo._id !== todoT._id)));
+      })
+      .catch(e => console.log("Error : ", e));
+
+  }
+
   return (
     <div className="App container">
       <div className="container-fluid">
@@ -33,7 +42,7 @@ const App = () => {
             <h1>Todos</h1>
             <div className="todo-app">
               <AddTodo handleAddTodo={handleAddTodo} />
-              <TodoList todos={todos} />
+              <TodoList todos={todos} deleteTodo={deleteTodo} />
             </div>
           </div>
         </div>
